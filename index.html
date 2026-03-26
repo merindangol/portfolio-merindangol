@@ -1,0 +1,835 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merin Dangol | Portfolio</title>
+
+    <style>
+        /* ===== GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 173, 181, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 173, 181, 0.1);
+            border-bottom: 1px solid rgba(0, 173, 181, 0.2);
+        }
+
+        header h2 {
+            color: #00adb5;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #00adb5;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00adb5;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+            gap: 25px;
+        }
+
+        .hero img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00adb5;
+            box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .role {
+            color: #00adb5;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00adb5, transparent);
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 173, 181, 0.1);
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+            color: #bbb;
+            font-size: 16px;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 173, 181, 0.15);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 173, 181, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 173, 181, 0.15);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            color: #00adb5;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            color: #aaa;
+            font-size: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00adb5;
+        }
+
+        /* ===== PROJECTS ===== */
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 173, 181, 0.15);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 173, 181, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 173, 181, 0.15);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
+        }
+
+        .project-card h3 {
+            color: #00adb5;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            text-align: center;
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 173, 181, 0.1);
+        }
+
+        .contact p {
+            margin-bottom: 30px;
+            color: #bbb;
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 0;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, #00adb5 0%, #00878f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid transparent;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 173, 181, 0.3);
+            border-color: #00adb5;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 0;
+            padding: 14px 35px;
+            color: white;
+            text-decoration: none;
+            border: 2px solid #00adb5;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .email-link:hover {
+            background: #00adb5;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 173, 181, 0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        /* Tablets - Medium screens (768px to 1023px) */
+        @media (max-width: 1023px) {
+            header {
+                padding: 16px 30px;
+            }
+
+            header h2 {
+                font-size: 20px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            section {
+                padding: 70px 30px;
+            }
+
+            .hero {
+                padding-top: 70px;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .role {
+                font-size: 16px;
+            }
+
+            .video-container {
+                max-width: 550px;
+            }
+
+            .video-container iframe {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .about p {
+                font-size: 15px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            .card li {
+                font-size: 13px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .project-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 16px;
+            }
+
+            .button-group {
+                gap: 15px;
+            }
+
+            .whatsapp-btn, .email-link {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }
+
+        /* Small tablets / Large phones (480px to 767px) */
+        @media (max-width: 767px) {
+            header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header h2 {
+                font-size: 18px;
+            }
+
+            nav {
+                gap: 12px;
+                margin-top: 8px;
+                justify-content: center;
+            }
+
+            nav a {
+                margin-left: 0;
+                font-size: 12px;
+            }
+
+            section {
+                padding: 50px 15px;
+            }
+
+            .hero {
+                height: auto;
+                padding: 80px 15px 30px;
+                margin-top: 10px;
+                gap: 18px;
+            }
+
+            .hero img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+                margin-bottom: 8px;
+            }
+
+            .role {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .contact-info {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+
+            .video-container {
+                max-width: 100%;
+                margin-top: 15px;
+            }
+
+            .video-container iframe {
+                height: 220px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .about {
+                padding: 25px;
+            }
+
+            .about p {
+                font-size: 14px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .card {
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            .card h3 {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .card ul {
+                padding-left: 15px;
+            }
+
+            .card li {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-card h3 {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .project-card p {
+                font-size: 13px;
+            }
+
+            .contact {
+                padding: 25px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .whatsapp-btn, .email-link {
+                padding: 12px 25px;
+                font-size: 13px;
+                width: 100%;
+            }
+        }
+
+        /* Mobile phones (320px to 479px) */
+        @media (max-width: 479px) {
+            header {
+                padding: 10px;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            header h2 {
+                font-size: 16px;
+                margin: 0;
+            }
+
+            nav {
+                gap: 8px;
+                margin-top: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 11px;
+                margin-left: 0;
+            }
+
+            section {
+                padding: 40px 12px;
+            }
+
+            .hero {
+                height: auto;
+                padding: 70px 12px 25px;
+                margin-top: 0;
+                gap: 15px;
+            }
+
+            .hero img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+
+            .role {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .contact-info {
+                font-size: 11px;
+                line-height: 1.5;
+                word-wrap: break-word;
+            }
+
+            .video-container {
+                margin-top: 12px;
+                max-width: 100%;
+            }
+
+            .video-container iframe {
+                height: 180px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+
+            .about {
+                padding: 20px;
+            }
+
+            .about p {
+                font-size: 13px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 10px;
+            }
+
+            .card h3 {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .card ul {
+                padding-left: 14px;
+            }
+
+            .card li {
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .project-card {
+                padding: 16px;
+                border-radius: 10px;
+            }
+
+            .project-card h3 {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .project-card p {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .contact {
+                padding: 20px;
+            }
+
+            .contact p {
+                font-size: 13px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .whatsapp-btn, .email-link {
+                padding: 12px 16px;
+                font-size: 12px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h2>Merin Dangol</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <img src="merin photo.jpg" alt="Profile Photo">
+        <h1>Merin Dangol</h1>
+        <p class="role">Frontend Developer • IT Student</p>
+        <p class="contact-info">
+            📧 merindangol025@email.com | 📞 +977-9826443060 | 📍 Tokha Kathmandu, Nepal
+        </p>
+        <div class="video-container">
+            <iframe src="video next.mp4" frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            I am an enthusiastic IT student passionate about web development and modern design.
+            I enjoy building responsive websites using HTML and CSS.
+            I am constantly learning new technologies and improving my coding skills.
+            My goal is to become a professional Full Stack Developer.
+        </p>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+
+            <div class="card">
+                <h3>Frontend</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Responsive Design</li>
+                    <li>Flexbox & Grid</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Programming</h3>
+                <ul>
+                    <li>C Programming</li>
+                    <li>C++</li>
+                    <li>Basic JavaScript</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Tools</h3>
+                <ul>
+                    <li>VS Code</li>
+                    <li>GitHub</li>
+                    <li>Google Sheets</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Communication</li>
+                    <li>Problem Solving</li>
+                    <li>Teamwork</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-container">
+
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>A responsive personal portfolio built using HTML and CSS with modern dark design.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Pharmacy Billing System</h3>
+                <p>A simple billing record system created using spreadsheets for managing sales data.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Landing Page Design</h3>
+                <p>A creative landing page design with hover effects and responsive layout.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>Let's Connect! Feel free to reach out via WhatsApp or email.</p>
+        <div class="button-group">
+            <a class="whatsapp-btn" href="https://wa.me/9779826443060" target="_blank">
+                💬 Chat on WhatsApp
+            </a>
+            <a class="email-link" href="mailto:merindangol025@email.com">
+                📧 Send Email
+            </a>
+        </div>
+    </section>
+
+</body>
+
+</html>
